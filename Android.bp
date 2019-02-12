@@ -1,0 +1,40 @@
+cc_library_shared {
+    name: "libboost_regex",
+    export_include_dirs: ["include"],
+    vendor_available: true,
+    srcs: [
+        "src/regex.cpp",
+        "src/usinstances.cpp",
+        "src/static_mutex.cpp",
+        "src/cregex.cpp",
+        "src/winstances.cpp",
+        "src/icu.cpp",
+        "src/regex_traits_defaults.cpp",
+        "src/regex_raw_buffer.cpp",
+        "src/posix_api.cpp",
+        "src/wc_regex_traits.cpp",
+        "src/w32_regex_traits.cpp",
+        "src/instances.cpp",
+        "src/c_regex_traits.cpp",
+        "src/fileiter.cpp",
+        "src/regex_debug.cpp",
+        "src/wide_posix_api.cpp",
+        "src/cpp_regex_traits.cpp",
+    ],
+    header_libs: [
+    ],
+    target: {
+        android: {
+            cflags: [
+                "-fPIC",
+                "-DPIC",
+            ],
+        },
+        not_windows: {
+            cflags: [
+                "-fPIC",
+                "-DPIC",
+            ],
+        },
+    },
+}
