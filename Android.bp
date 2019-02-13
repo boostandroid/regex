@@ -2,6 +2,7 @@ cc_library_shared {
     name: "libboost_regex",
     export_include_dirs: ["include"],
     vendor_available: true,
+    rtti: true,
     srcs: [
         "src/regex.cpp",
         "src/usinstances.cpp",
@@ -22,12 +23,28 @@ cc_library_shared {
         "src/cpp_regex_traits.cpp",
     ],
     header_libs: [
+        "libboost_config",
+        "libboost_predef",
+        "libboost_throw_exception",
+        "libboost_assert",
+        "libboost_smart_ptr",
+        "libboost_core",
+        "libboost_mpl",
+        "libboost_type_traits",
+        "libboost_static_assert",
+        "libboost_integer",
+        "libboost_preprocessor",
+        "libboost_functional",
+        "libboost_container_hash",
+        "libboost_detail",
     ],
     target: {
         android: {
             cflags: [
                 "-fPIC",
                 "-DPIC",
+                "-Wno-error=implicit-fallthrough",
+                "-fexceptions",
             ],
         },
         not_windows: {
